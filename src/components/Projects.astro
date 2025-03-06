@@ -1,0 +1,66 @@
+---
+const projects = [
+  {
+    title: "Portfolio Personal",
+    description: "Mi sitio web personal desarrollado con Astro y Tailwind CSS. Este proyecto muestra mis habilidades en el desarrollo web moderno, implementando características como modo oscuro, internacionalización (i18n) y diseño responsive. Utiliza tecnologías como Astro para el rendimiento óptimo, Tailwind CSS para el diseño, y JavaScript vanilla para la interactividad.",
+    image: "/src/assets/portfoli.png",
+    technologies: ["Astro", "Tailwind CSS", "JavaScript"],
+    github: "https://github.com/oscar22rodenas/portfolio",
+    featured: true
+  },
+  {
+    title: "Proyecte de Gestio de Hotels",
+    description: "Aplicación web para la gestión de hoteles desarrollada con Laravel en el back-end y HTML, CSS y JavaScript en el front-end. Incluye funcionalidades como gestión de habitaciones, reservas, hoteles y clientes. Aparte, de una web de la cadena de hoteles, más visual y desarrollada con Laravel y Vue.js, a partir de APIs de la base de datos de la web de gestion.",
+    image: "/src/assets/hotel.png",
+    technologies: ["PHP", "MySQL", "JavaScript", "HTML", "CSS", "Laravel", "Vue.js"],
+    github: "https://github.com/oscar22rodenas/proyecto_hoteles",
+  },
+  {
+    title: "Proyecte de Gestio de Subastas",
+    description: "Aplicación web para la gestión de subastas desarrollada con PHP en el back-end y HTML, CSS y JavaScript en el front-end. Incluye funcionalidades para el rol de subhastador que es la persona que gestiona todas las subastas y productos de los clientes i para los clientes donde pueden subir los productos.",
+    image: "/projects/ecommerce-api.jpg",
+    technologies: ["HTML", "CSS", "JavaScript", "PHP", "MySQL",],
+    github: "https://github.com/oscar22rodenas/proyecto_subastas",
+  }
+];
+---
+<section id="proyectos" class="py-16">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-12">Proyectos</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map(project => (
+        <article class="bg-white dark:bg-gray-700 rounded-lg shadow-lg overflow-hidden">
+          <div class="aspect-video bg-gray-100 dark:bg-gray-600">
+            <img 
+              src={project.image} 
+              alt={project.title}
+              class="w-full h-full object-fill aspect-video  border-2 border-primary dark:border-secondary"
+            />
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-2">{project.title}</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              {project.technologies.map(tech => (
+                <span class="px-3 py-1 bg-primary/10 text-primary dark:bg-secondary/10 dark:text-secondary rounded-full text-sm">
+                  {tech}
+                </span>
+              ))}
+            </div>
+            <div class="flex gap-4">
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-2 text-primary dark:text-secondary hover:underline"
+              >
+
+                GitHub
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

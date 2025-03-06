@@ -1,0 +1,47 @@
+---
+const languages = [
+  { code: 'es', name: 'Español' },
+  { code: 'ca', name: 'Català' },
+  { code: 'en', name: 'English' }
+];
+---
+
+<div class="relative inline-block text-left">
+  <select
+    id="language-select"
+    class="bg-transparent border border-gray-300 dark:border-gray-700 rounded-lg px-3 py-1.5 text-sm"
+  >
+    {languages.map(lang => (
+      <option value={lang.code}>{lang.name}</option>
+    ))}
+  </select>
+</div>
+
+<script>
+  const select = document.querySelector('#language-select');
+  select.addEventListener('change', (e) => {
+    const lang = e.target.value;
+    const path = window.location.pathname;
+    const newPath = lang === 'es' ? path : `/${lang}${path}`;
+    window.location.href = newPath;
+  });
+
+  // Apply CSS styles to each option based on theme
+  const options = select.querySelectorAll('option');
+  const isDarkTheme = document.documentElement.classList.contains('dark');
+
+  options.forEach(option => {
+    if (isDarkTheme) {
+      option.style.backgroundColor = 'rgb(17 24 39 / var(--tw-bg-opacity, 1))';
+      option.style.color = '#ffffff';
+    } else {
+      option.style.backgroundColor = '#ffffff';
+      option.style.color = '#000000';
+    }
+    option.style.border = 'none';
+    option.style.padding = '8px 16px';
+    option.style.outline = 'none';
+    option.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+    option.style.cursor = 'pointer';
+  });
+</script>

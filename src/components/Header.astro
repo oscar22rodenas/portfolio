@@ -1,0 +1,39 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+import LanguageSelector from './LanguageSelector.astro';
+
+const navItems = [
+  { href: '#inicio', text: 'Inicio' },
+  { href: '#sobre-mi', text: 'Sobre mí' },
+  { href: '#experiencia', text: 'Experiencia' },
+  { href: '#proyectos', text: 'Proyectos' },
+  { href: '#contacto', text: 'Contacto' },
+];
+---
+
+<header class="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm z-50 py-4">
+  <div class="container mx-auto px-4">
+    <nav class="flex items-center justify-between">
+      <a href="/" class="inline-flex items-center gap-2 text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        <img class="w-12 h-12 rounded-full" src="src/assets/profile.jpg" alt="logo">
+        Óscar Ródenas
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        {navItems.map(item => (
+          <a 
+            href={item.href}
+            class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-secondary transition-colors"
+          >
+            {item.text}
+          </a>
+        ))}
+      </div>
+
+      <div class="flex items-center gap-4">
+        <LanguageSelector />
+        <ThemeToggle />
+      </div>
+    </nav>
+  </div>
+</header>
